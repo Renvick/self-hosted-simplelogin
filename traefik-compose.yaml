@@ -8,6 +8,7 @@ x-logging: &default-logging
 services:
   reverse-proxy:
     image: traefik:${TRAEFIK_VERSION:-latest}
+    platform: linux/amd64
     container_name: traefik
     restart: ${RESTART_POLICY:-unless-stopped}
     logging: *default-logging
