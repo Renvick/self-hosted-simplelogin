@@ -7,7 +7,7 @@ services:
   dns:
     image: crazymax/unbound:latest
     container_name: dns
-    platform: linux/amd64
+    platform: linux/arm64
     user: "0:0"
     cap_add:
       - NET_BIND_SERVICE
@@ -30,7 +30,7 @@ services:
       context: ./postfix/
       dockerfile: Dockerfile
     container_name: postfix
-    platform: linux/amd64
+    platform: linux/arm64
     dns:
       - '10.0.0.53'
     networks:
@@ -58,7 +58,7 @@ services:
   traefik-certificate-exporter:
     image: ravensorb/traefik-certificate-exporter:latest
     container_name: cert-exporter
-    platform: linux/amd64
+    platform: linux/arm64
     environment:
       - TRAEFIK_CERTIFICATE_EXPORTER_SETTINGS_FLAT=true
       - TRAEFIK_CERTIFICATE_EXPORTER_SETTINGS_RESTARTCONTAINER=true
